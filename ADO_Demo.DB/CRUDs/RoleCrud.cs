@@ -15,7 +15,7 @@ namespace ADO_Demo.DB.CRUDs
             _db.Open();
 
             //var sql = "SELECT id, role FROM tab_roles;";
-            _command.CommandText = "SELECT id, role FROM tab_roles;"; ;
+            _command.CommandText = "SELECT id, role FROM tab_roles;"; 
             var result = _command.ExecuteReader();
             if (result.HasRows)
             {
