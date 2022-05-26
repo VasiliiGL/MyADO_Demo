@@ -4,7 +4,7 @@ using System;
 
 namespace ADO_Demo.DB
 {
-    public class DataBase
+    public abstract class DataBase
     {
         //private DbConnection _db;
 
@@ -13,12 +13,16 @@ namespace ADO_Demo.DB
         //    _db = db;
         //}
 
-        private MySqlConnection _db;
+       
         private const string Str = "Server=myServerAddress;Database=myDataBase;Uid=myUsername;Pwd=myPassword;";
+        protected MySqlConnection _db;
+        protected MySqlCommand _command;
 
-        public DataBase()
+        protected DataBase()
         {
             _db = new MySqlConnection (Str);
+            _command = new MySqlCommand { Connection =_db};
+            //_command.Connection = _db;
         }
 
 
