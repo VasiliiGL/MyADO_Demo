@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <None Update="Config\config_db.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
