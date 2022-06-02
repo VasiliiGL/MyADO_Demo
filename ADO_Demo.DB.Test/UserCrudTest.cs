@@ -4,6 +4,7 @@ using System.Text;
 using Xunit;
 using ADO_Demo.DB.Models;
 using ADO_Demo.DB.CRUDs;
+using System.Linq;
 
 namespace ADO_Demo.DB.Test
 {
@@ -18,27 +19,38 @@ namespace ADO_Demo.DB.Test
                 {
                     id = 1,
                     FirstName = "Anonim",
-                    LastName = "Anonimus"
+                    LastName = "Anonimus",
+                    Emails = new List <string> ()
                 },
                 new User
                 {
                     id = 2,
                     FirstName = "Anna",
-                    LastName = "Karenina"
+                    LastName = "Karenina",
+                    Emails = new List <string> ()
+                    {
+                        "anna@karenina.ru"
+                    }
                 }
                 ,
                 new User
                 {
                     id = 3,
                     FirstName = "Admin",
-                    LastName = "Adminus"
+                    LastName = "Adminus",
+                     Emails = new List <string> ()
+                    {
+                        "admin@admin.ru",
+                        "ad@admin.ru"
+                    }
                 }
 
             };
 
             var userCrud = new UserCrud();
-            var actualUsers = userCrud.GetAllUsers();
-            Assert.Equal(expectedUsers,actualUsers);
+            var actualUsers = userCrud.GetAllUsers().ToList();
+            //Assert.Equal(expectedUsers,actualUsers);
+            Assert.Equal(expectedUsers[0].Emails, actualUsers[0].Emails);
         }
     }
 }
