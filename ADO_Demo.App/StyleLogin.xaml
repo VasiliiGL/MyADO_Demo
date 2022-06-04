@@ -1,0 +1,106 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="StyleBorder" TargetType="Border">
+        <Setter Property="CornerRadius" Value="15"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+
+    <Style x:Key="StyleBorderGreen" TargetType="Border"
+           BasedOn="{StaticResource StyleBorder}">
+        <Setter Property="BorderBrush" Value="Green"/>
+    </Style>
+
+    <Style x:Key="StyleBorderRed" TargetType="Border"
+           BasedOn="{StaticResource StyleBorder}">
+        <Setter Property="BorderBrush" Value="Red"/>
+    </Style>
+
+    <Style x:Key="StyleBorderBlack" TargetType="Border"
+           BasedOn="{StaticResource StyleBorder}">
+        <Setter Property="BorderBrush" Value="Black"/>
+    </Style>
+
+    <Style x:Key="StyleContentPresenter" TargetType="ContentPresenter">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+
+    <Style x:Key="StyleDefault" TargetType="Control">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="3"/>
+    </Style>
+
+    <Style x:Key="StyleLabel" TargetType="Label"
+        BasedOn="{StaticResource StyleDefault}">
+        <Setter Property="Width" Value="200"/>
+    </Style>
+
+    <Style x:Key="StyleInput" TargetType="TextBox"
+        BasedOn="{StaticResource StyleDefault}">
+        <Setter Property="Width" Value="200"/>
+        <Style.Resources>
+            <Style TargetType="Border" 
+                   BasedOn="{StaticResource StyleBorderBlack}">
+            </Style>
+        </Style.Resources>
+    </Style>
+    <Style x:Key="StyleInputLogin" TargetType="ComboBox"
+        BasedOn="{StaticResource StyleDefault}">
+        <Setter Property="Width" Value="200"/>
+        <Style.Resources>
+            <Style TargetType="Border" 
+                   BasedOn="{StaticResource StyleBorderBlack}">
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="StyleInputPass" TargetType="PasswordBox"
+        BasedOn="{StaticResource StyleDefault}">
+        <Setter Property="Width" Value="200"/>
+
+    </Style>
+    <Style x:Key="StyleDefaultButton" TargetType="Button">
+        <Style.Setters>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style.Setters>
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsEnabled" Value="True"/>
+                    <Condition Property="IsMouseOver" Value="True"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="Gray"/>
+            </Trigger>
+
+            <DataTrigger Binding="{Binding ElementName=InputLogin, Path=Text}" Value="">
+                <Setter Property="IsEnabled" Value="False"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=InputPassword, Path=Text}" Value="">
+                <Setter Property="IsEnabled" Value="False"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="StyleButtonStart" TargetType="Button"
+           BasedOn="{StaticResource StyleDefaultButton}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Style="{StaticResource StyleBorderGreen}">
+                        <ContentPresenter Style="{StaticResource StyleContentPresenter}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
