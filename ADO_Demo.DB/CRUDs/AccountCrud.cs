@@ -12,18 +12,35 @@ namespace ADO_Demo.DB.CRUDs
         {
             Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
         }
+
+        public Role roleAccount { get; set; }
         public IEnumerable<Account> GetAllAcounts()
         {
             _db.Open();
-            //// var sql = "SELECT tab_users.id AS 'id', first_name, last_name, email FROM tab_users JOIN tab_user_email.id = tab_user_emails.user_id";
-            //var sql = " SELECT * FROM host1323541_itstep1.tab_users";
-            //var result = _db.Query<User>(sql);
-
+           
             var sql = "SELECT * FROM tab_accounts";
             var result = _db.Query<Account>(sql);
 
             _db.Close();
             return result;
+        }
+
+       public Role GetRole( Account account)
+        {
+            var roles = new List<Role>();
+            var roleCrud = new RoleCrud();
+            _db.Open();
+            roles = new List<Role>(roleCrud.GetAllRoles());
+            foreach (var role in roles)
+            {
+                if (account.RoleId == role.Id)
+                {
+                    roleAccount = role;
+                }
+            }
+            _db.Close();
+
+            return roleAccount;
         }
     }
 }

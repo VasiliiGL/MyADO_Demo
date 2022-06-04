@@ -17,9 +17,10 @@
         </StackPanel>
         <StackPanel x:Name="Role" Orientation="Horizontal">
             <Label Content="Role"/>
-            <Label Content =""/>
+            <Label Content ="{Binding curentRole.RoleName }"/>
         </StackPanel>
+        <Button Content="Registration" Height="30" Width="100" Click="Button_Click" Style="{StaticResource StyleOtherButton}"/>
+        <Button Content="EXIT" Style="{DynamicResource StyleButtonExit}" Click="Button_Click"/>
     </StackPanel>
     
-     
 </Window>

@@ -47,18 +47,41 @@ namespace ADO_Demo.App
                 {
                     MessageBox.Show("Successfully. Authorization passed!");
                     initialization = true;
-                    var accountWindow = new AccountWindow(account);
-                    accountWindow.Show();
-                    this.Close();
+                    OpenWindowAccount(account);
                 }   
             }
             if (initialization == false)
             {
                 MessageBox.Show("Authorization failed!");
             }
-               
+        }
 
+        public void OpenWindowAccount(Account account)
+        {
+            var _account = new AccountCrud();
+            if (_account.GetRole(account).RoleName =="guest")
+            {
+                var accountWindow = new AccountWindow(account);
+                accountWindow.Show();
+                this.Close();
+            }
+            if (_account.GetRole(account).RoleName == "admin")
+            {
+                var accountWindow = new AccountWindowAdmin(account);
+                accountWindow.Show();
+                this.Close();
+            }
+            if (_account.GetRole(account).RoleName == "user")
+            {
+                var accountWindowUser = new AccountWindowUser(account);
+                accountWindowUser.Show();
+                this.Close();
+            }
+        }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

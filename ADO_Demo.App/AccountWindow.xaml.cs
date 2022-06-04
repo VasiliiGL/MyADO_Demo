@@ -2,6 +2,7 @@
 using ADO_Demo.DB.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,10 +24,19 @@ namespace ADO_Demo.App
         public Role curentRole { get; set; }
         public AccountWindow(Account account)
         {
+            var _account = new AccountCrud();
             currentAccount = account;
+            curentRole = _account.GetRole(currentAccount);
             InitializeComponent();
-            MessageBox.Show(currentAccount.Login);
+            //MessageBox.Show(currentAccount.Login);
+            //MessageBox.Show(curentRole.RoleName);
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var registrationtWindow = new MainWindow();
+            registrationtWindow.Show();
+            this.Close();
+        }
     }
 }

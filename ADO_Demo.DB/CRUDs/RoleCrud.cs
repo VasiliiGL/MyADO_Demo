@@ -9,7 +9,7 @@ namespace ADO_Demo.DB.CRUDs
     {
         public RoleCrud() : base() { }
 
-        public List<Role> GetAllRoles ()
+        public List<Role> GetAllRoles()
         {
             var roles = new List<Role>();
             _db.Open();
@@ -33,5 +33,7 @@ namespace ADO_Demo.DB.CRUDs
 
             return roles;
         }
+
+        
     }
 }

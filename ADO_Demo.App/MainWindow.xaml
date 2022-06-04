@@ -37,6 +37,7 @@
             Click="Button_Click">
             </Button>
         </StackPanel>
+        <Button Content="EXIT" Style="{DynamicResource StyleButtonExit}" Click="Button_Click_1"/>
 
     </StackPanel>
     
