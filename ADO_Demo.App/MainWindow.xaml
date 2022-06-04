@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Window.Resources>
+        <ResourceDictionary Source="StyleLogin.xaml"/>
+    </Window.Resources>
     <StackPanel>
+        <Label Content="List of roles"/>
         <ListView ItemsSource="{Binding Roles}">
             <ListView.View>
                 <GridView>
@@ -16,7 +20,25 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        
+       
+        <StackPanel  >
+            <StackPanel x:Name="EnterLogin" Orientation="Horizontal" >
+                <Label Content="Login"  Style="{DynamicResource StyleLabel}" />
+                <ComboBox x:Name="InputLogin" Style="{DynamicResource StyleInputLogin}"
+                          ItemsSource="{Binding Accounts}" DisplayMemberPath="Login"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Password" Style="{DynamicResource StyleLabel}"/>
+                <TextBox x:Name="InputPassword" Style="{DynamicResource StyleInput}"/>
+            </StackPanel>
+            <Button
+            Style="{DynamicResource StyleButtonStart}"
+            Content="Start"
+            Click="Button_Click">
+            </Button>
+        </StackPanel>
 
     </StackPanel>
+    
+    
 </Window>
