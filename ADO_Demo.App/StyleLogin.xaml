@@ -90,6 +90,27 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
+    
+    <Style x:Key="StyleOtherButton" TargetType="Button">
+        <Style.Setters>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style.Setters>
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsEnabled" Value="True"/>
+                    <Condition Property="IsMouseOver" Value="True"/>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+
+
 
     <Style x:Key="StyleButtonStart" TargetType="Button"
            BasedOn="{StaticResource StyleDefaultButton}">
@@ -102,5 +123,23 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    
+    <Style x:Key="StyleButtonExit" TargetType="Button"
+            BasedOn="{StaticResource StyleOtherButton}">
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Style="{StaticResource StyleBorderRed}">
+                        <ContentPresenter Style="{StaticResource StyleContentPresenter}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
     </Style>
 </ResourceDictionary>
